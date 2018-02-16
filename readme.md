@@ -6,7 +6,7 @@ note-taking.
 2. A program that can capture keystrokes, recording them in some sort of a "movie" file for playback later, which will
 facilitate the teaching of Vim.
 
-The website can be viewed [here][website-link]
+The website can be viewed [here][website-link].
 
 [![trello logo][trello-logo]][trello-link]
 
