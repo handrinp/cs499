@@ -7,6 +7,13 @@ body {
   padding: 0;
 }
 
+/* card-style */
+nav, section {
+  border-radius: 10px;
+  box-shadow: 3px 3px 15px #888;
+}
+
+/* spacing */
 header, nav, section, footer {
   margin-top: 30px;
 }
@@ -21,6 +28,7 @@ footer {
   margin: 0 auto;
 }
 
+/* reset */
 h1, h2, h3, h4, h5, p, a, li {
   margin: 0;
   padding: 0;
@@ -37,7 +45,6 @@ header h1 {
 
 nav {
   background-color: #333;
-  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -68,13 +75,11 @@ nav li a:hover {
 }
 
 .active, .active:hover {
-  background-color: #4a5;
+  background-color: #45a;
 }
 
 section {
-  padding: 20px;
-  border: 2px solid #000;
-  border-radius: 5px;
+  padding: 15px 20px;
 }
 
 section h2 {
