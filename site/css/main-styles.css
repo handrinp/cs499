@@ -1,6 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
+}
+
+header, nav, section, footer {
+  margin-top: 30px;
+}
+
+footer {
+  margin-bottom: 30px;
+}
+
+#content-wrapper {
+  width: 800px;
+  display: block;
+  margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5, p, a, li {
@@ -9,16 +27,59 @@ h1, h2, h3, h4, h5, p, a, li {
   font-family: sans-serif;
 }
 
-nav ul, ol {
+header {
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3em;
+}
+
+nav {
+  background-color: #333;
+}
+
+nav ul {
   list-style-type: none;
-  padding-left: 20px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-nav a {
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
   text-decoration: none;
-  color: #00c;
 }
 
-nav a:hover {
-  color: #88f;
+nav li a:hover {
+  background-color: #111;
+}
+
+.active, .active:hover {
+  background-color: #4a5;
+}
+
+section {
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+section h2 {
+  font-size: 2em;
+}
+
+section p {
+  margin-top: 15px;
+}
+
+footer {
+  text-align: center;
 }
