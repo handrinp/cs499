@@ -37,17 +37,22 @@ header h1 {
 
 nav {
   background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 nav li {
   float: left;
+}
+
+nav #about {
+  float: right;
 }
 
 nav li a {
