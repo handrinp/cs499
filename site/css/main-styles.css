@@ -7,13 +7,11 @@ body {
   padding: 0;
 }
 
-/* card-style */
 nav, section {
   border-radius: 10px;
   box-shadow: 3px 3px 15px #888;
 }
 
-/* spacing */
 header, nav, section, footer {
   margin-top: 30px;
 }
@@ -23,12 +21,13 @@ footer {
 }
 
 #content-wrapper {
-  width: 800px;
+  min-width: 450px;
+  width: 90%;
+  max-width: 800px;
   display: block;
   margin: 0 auto;
 }
 
-/* reset */
 h1, h2, h3, h4, h5, p, a, li {
   margin: 0;
   padding: 0;
@@ -80,6 +79,7 @@ nav li a:hover {
 
 section {
   padding: 15px 20px;
+  clear: both;
 }
 
 section h2 {
@@ -88,6 +88,14 @@ section h2 {
 
 section p {
   margin-top: 15px;
+}
+
+section .img-right {
+  float: right;
+}
+
+section .img-left {
+  float: left;
 }
 
 footer {
