@@ -90,12 +90,18 @@ section p {
   margin-top: 15px;
 }
 
+section img {
+  border: 1px solid black;
+}
+
 section .img-right {
   float: right;
+  margin-left: 15px;
 }
 
 section .img-left {
   float: left;
+  margin-right: 15px;
 }
 
 footer {
