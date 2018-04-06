@@ -1,0 +1,10 @@
+function ATF()
+  let fname = expand('%:t:r') . ".rec"
+
+  if filewritable(fname)
+    execute 'w >> ' fname
+  else
+    execute 'w ' fname
+  endif
+endfunction
+
