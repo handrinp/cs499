@@ -1,20 +1,9 @@
 function REC()
   let fname = expand('%:t:r') . ".rec"
-  let lines = line('$')
-
-  "if !filewritable(fname)
-    silent execute '!touch ' . fname
-    silent execute '!chmod u+x ' . fname
-  "endif
-
-  call MyLog(lines, fname)
+  let lineCount = line('$')
+  call system('touch ' . fname)
+  call system('chmod u+x ' . fname)
+  call system('echo ' . lineCount . '~$(($(date +%s%N)/1000000))' . ' >> ' . fname)
   execute 'silent! w >> ' . fname
-endfunction
-
-function MyLog(message, file)
-  new
-  put=a:message
-  execute 'silent! w >>' a:file
-  q
 endfunction
 
