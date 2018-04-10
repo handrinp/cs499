@@ -1,10 +1,20 @@
-function ATF()
+function REC()
   let fname = expand('%:t:r') . ".rec"
+  let lines = line('$')
 
-  if filewritable(fname)
-    execute 'w >> ' fname
-  else
-    execute 'w ' fname
-  endif
+  "if !filewritable(fname)
+    silent execute '!touch ' . fname
+    silent execute '!chmod u+x ' . fname
+  "endif
+
+  call MyLog(lines, fname)
+  execute 'silent! w >> ' . fname
+endfunction
+
+function MyLog(message, file)
+  new
+  put=a:message
+  execute 'silent! w >>' a:file
+  q
 endfunction
 
