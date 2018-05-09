@@ -79,17 +79,21 @@ public class VimVideo {
     return maxWidth;
   }
 
-  public void createGIF(String path) {
+  public void createGIF(String path, int timeBetweenFrames) {
     int height = getHeight() * CHAR_HEIGHT + 10;
     int width = getWidth() * CHAR_WIDTH;
-    GifSequenceWriter gif = new GifSequenceWriter(new File(path), 1000, true);
+    GifSequenceWriter gif = new GifSequenceWriter(new File(path), timeBetweenFrames, true);
 
     for (int f = 0; f < frames.size(); ++f) {
       Frame frame = frames.get(f);
       BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
       Graphics g = img.getGraphics();
+
+      // draw black background
       g.setColor(Color.BLACK);
       g.fillRect(0, 0, width, height);
+
+      // draw text
       g.setColor(Color.WHITE);
       g.setFont(Font.decode(Font.MONOSPACED + "-20"));
       String[] lines = frame.getLines().split(System.lineSeparator());
@@ -98,13 +102,17 @@ public class VimVideo {
         g.drawString(lines[i], 0, CHAR_HEIGHT * (i + 1) - 5);
       }
 
+      // draw progress bar
       g.setColor(Color.LIGHT_GRAY);
       g.fillRect(0, height - 10, width, 10);
       g.setColor(Color.RED);
-      g.fillRect(0, height - 10, (int) ((double) (f + 1) * width / frames.size()), 10);
+      g.fillRect(0, height - 10, (int) ((double) f * width / (frames.size() - 1)), 10);
+
+      // add frame to gif
       gif.appendFrame(img);
     }
 
+    // save gif
     gif.close();
   }
 }
