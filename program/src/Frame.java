@@ -18,6 +18,20 @@ public class Frame {
     return delta;
   }
 
+  public int getWidth() {
+    int maxWidth = -1;
+
+    for (String line : lines) {
+      maxWidth = Math.max(maxWidth, line.length());
+    }
+
+    return maxWidth;
+  }
+
+  public int getHeight() {
+    return lines.length;
+  }
+
   public String getLines() {
     StringBuilder sb = new StringBuilder();
 
