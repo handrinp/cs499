@@ -1,5 +1,5 @@
 function REC()
-  let fname = expand('%:t:r') . ".rec"
+  let fname = expand('%:p') . ".rec"
   let lineCount = line('$')
   call system('touch ' . fname)
   call system('chmod u+x ' . fname)
