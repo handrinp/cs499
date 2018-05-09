@@ -5,6 +5,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #ccc;
 }
 
 nav, section {
@@ -57,14 +58,13 @@ nav li {
   float: left;
 }
 
-nav #about {
+nav li:last-child {
   float: right;
 }
 
 nav li a {
   display: block;
   color: #fff;
-  text-align: center;
   padding: 15px;
   text-decoration: none;
 }
@@ -75,11 +75,13 @@ nav li a:hover {
 
 .active, .active:hover {
   background-color: #45a;
+  cursor: default;
 }
 
 section {
   padding: 15px 20px;
   clear: both;
+  background-color: #fff;
 }
 
 section h2 {
@@ -92,6 +94,7 @@ section p {
 
 section img {
   border: 1px solid black;
+  margin: 10px 0;
 }
 
 section .img-right {
