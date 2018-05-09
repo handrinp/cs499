@@ -1,11 +1,15 @@
 public class Frame {
   private long timestamp;
   private long delta;
+  private int cursorX;
+  private int cursorY;
   private String[] lines;
 
-  public Frame(long timestamp, long delta, String[] lines) {
+  public Frame(long timestamp, long delta, int cursorX, int cursorY, String[] lines) {
     this.timestamp = timestamp;
     this.delta = delta;
+    this.cursorX = cursorX;
+    this.cursorY = cursorY;
     this.lines = new String[lines.length];
     System.arraycopy(lines, 0, this.lines, 0, lines.length);
   }
@@ -32,6 +36,14 @@ public class Frame {
     return lines.length;
   }
 
+  public int getX() {
+    return cursorX;
+  }
+
+  public int getY() {
+    return cursorY;
+  }
+
   public String getLines() {
     StringBuilder sb = new StringBuilder();
 
@@ -49,10 +61,12 @@ public class Frame {
     sb.append(lines.length);
     sb.append('~');
     sb.append(timestamp);
+    sb.append('~');
+    sb.append(cursorX);
+    sb.append('~');
+    sb.append(cursorY);
     sb.append(System.lineSeparator());
     sb.append(getLines());
     return sb.toString();
   }
-
-  // ayyy
 }

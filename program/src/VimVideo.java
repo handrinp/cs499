@@ -30,7 +30,9 @@ public class VimVideo {
 
         long timestamp = Long.parseLong(frameData[1]);
         long delta = frames.isEmpty() ? 0 : timestamp - frames.get(frames.size() - 1).getTimestamp();
-        frames.add(new Frame(timestamp, delta, lines));
+        int x = Integer.parseInt(frameData[2]);
+        int y = Integer.parseInt(frameData[3]);
+        frames.add(new Frame(timestamp, delta, x, y, lines));
       }
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -92,6 +94,10 @@ public class VimVideo {
       // draw black background
       g.setColor(Color.BLACK);
       g.fillRect(0, 0, width, height);
+
+      // draw cursor
+      g.setColor(Color.GRAY);
+      g.fillRect((frame.getX() - 1) * CHAR_WIDTH, (frame.getY() - 1) * CHAR_HEIGHT - 2, CHAR_WIDTH, CHAR_HEIGHT);
 
       // draw text
       g.setColor(Color.WHITE);

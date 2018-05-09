@@ -1,9 +1,10 @@
 function REC()
   let fname = expand('%:p') . ".rec"
   let lineCount = line('$')
+  let pos = getpos(".")
   call system('touch ' . fname)
-  call system('chmod u+x ' . fname)
-  call system('echo ' . lineCount . '~$(($(date +%s%N)/1000000))' . ' >> ' . fname)
+  call system('chmod u+w ' . fname)
+  call system('echo ' . lineCount . '~$(($(date +%s%N)/1000000))~' . pos[1] . '~' . pos[2] . ' >> ' . fname)
   execute 'silent! w >> ' . fname
 endfunction
 
