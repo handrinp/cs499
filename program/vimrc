@@ -7,3 +7,9 @@ function REC()
   execute 'silent! w >> ' . fname
 endfunction
 
+let record=0
+
+autocmd TextChanged *
+\ if record|
+\   call REC()|
+\ endif
