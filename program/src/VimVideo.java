@@ -96,7 +96,7 @@ public class VimVideo {
       g.fillRect(0, 0, width, height);
 
       // draw cursor
-      g.setColor(Color.GRAY);
+      g.setColor(Color.BLUE);
       g.fillRect((frame.getX() - 1) * CHAR_WIDTH, (frame.getY() - 1) * CHAR_HEIGHT - 2, CHAR_WIDTH, CHAR_HEIGHT);
 
       // draw text
