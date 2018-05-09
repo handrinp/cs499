@@ -10,6 +10,11 @@ endfunction
 
 let record=0
 
+autocmd CursorMoved *
+\ if record|
+\   call REC()|
+\ endif
+
 autocmd InsertLeave *
 \ if record|
 \   call REC()|
