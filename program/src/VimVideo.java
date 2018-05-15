@@ -15,7 +15,7 @@ public class VimVideo {
   private List<Frame> frames;
 
   public VimVideo(String fileName) {
-    File inFile = new File(fileName + ".rec");
+    File inFile = new File(fileName + ".vrec");
     frames = new ArrayList<>();
 
     try (Scanner in = new Scanner(inFile)) {
