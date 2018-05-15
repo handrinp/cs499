@@ -16,8 +16,7 @@ public class VimVideo {
   private static final int CHAR_HEIGHT = 20;
   private List<Frame> frames;
 
-  public VimVideo(String fileName) {
-    File inFile = new File(fileName + ".vrec");
+  public VimVideo(File inFile) {
     frames = new ArrayList<>();
 
     try (Scanner in = new Scanner(inFile)) {
@@ -51,6 +50,7 @@ public class VimVideo {
 
   public void play() {
     System.out.println("======================================================");
+
     frames.forEach(frame -> {
       try {
         long delta = frame.getDelta();
