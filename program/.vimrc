@@ -14,7 +14,7 @@ function REC(record)
     call system('chmod u+w ' . fname)
 
     " Append the frame "header" for this edit to the vrec file
-    call system('echo ' . lineCount . '~$(($(date +%s%N)/1000000))~' . pos[1] . '~' . pos[2] . ' >> ' . fname)
+    call system('echo ' . lineCount . '~$(($(date +%s%N)/1000000))~' . pos[2] . '~' . pos[1] . ' >> ' . fname)
 
     " Record this edit, appending it to the vrec file
     execute 'silent! w >> ' . fname
