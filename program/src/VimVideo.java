@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -82,6 +84,15 @@ public class VimVideo {
   }
 
   public void createGIF(String path, int timeBetweenFrames) {
+    createGIF(path, timeBetweenFrames, Color.BLACK, Color.WHITE, Color.BLUE);
+  }
+
+  public void createGIF(String path, int timeBetweenFrames, Color gifBackground, Color gifForeground, Color gifCursor) {
+    createGIF(path, timeBetweenFrames, gifBackground, gifForeground, gifCursor, Color.LIGHT_GRAY, Color.RED);
+  }
+
+  public void createGIF(String path, int timeBetweenFrames, Color gifBackground, Color gifForeground, Color gifCursor,
+      Color gifProgressBackground, Color gifProgressForeground) {
     int height = getHeight() * CHAR_HEIGHT + 10;
     int width = getWidth() * CHAR_WIDTH;
     GifSequenceWriter gif = new GifSequenceWriter(new File(path), timeBetweenFrames, true);
@@ -89,18 +100,21 @@ public class VimVideo {
     for (int f = 0; f < frames.size(); ++f) {
       Frame frame = frames.get(f);
       BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-      Graphics g = img.getGraphics();
+      Graphics2D g = (Graphics2D) img.getGraphics();
 
-      // draw black background
-      g.setColor(Color.BLACK);
+      // anti-alias the text
+      g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+
+      // draw background
+      g.setColor(gifBackground);
       g.fillRect(0, 0, width, height);
 
       // draw cursor
-      g.setColor(Color.BLUE);
+      g.setColor(gifCursor);
       g.fillRect((frame.getX() - 1) * CHAR_WIDTH, (frame.getY() - 1) * CHAR_HEIGHT - 2, CHAR_WIDTH, CHAR_HEIGHT);
 
       // draw text
-      g.setColor(Color.WHITE);
+      g.setColor(gifForeground);
       g.setFont(Font.decode(Font.MONOSPACED + "-20"));
       String[] lines = frame.getLines().split(System.lineSeparator());
 
@@ -109,9 +123,9 @@ public class VimVideo {
       }
 
       // draw progress bar
-      g.setColor(Color.LIGHT_GRAY);
+      g.setColor(gifProgressBackground);
       g.fillRect(0, height - 10, width, 10);
-      g.setColor(Color.RED);
+      g.setColor(gifProgressForeground);
       g.fillRect(0, height - 10, (int) ((double) f * width / (frames.size() - 1)), 10);
 
       // add frame to gif
